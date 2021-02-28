@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+
+<html lang = "en">
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport">    
+</head>
+<body>
+    <h1>SOFE4630 - Assignment 2</h1>
+    <h1>Acne Tracker</h1>
+    <h3>Eric Tsim (100560172)</h3>
+
+    <div>
+        <form method="post" enctype="multipart/form-data" action=".">
+
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="alert alert-primary" role="alert">
+                Error!
+            </div>
+            {% endif %}
+
+            {{ form.as_p }}
+
+            <button type="submit" name="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
