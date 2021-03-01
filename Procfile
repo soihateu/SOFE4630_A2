@@ -1,1 +1,1 @@
-web: gunicorn AcneTracker.wsgi
+web: gunicorn AcneCalendar.wsgi
