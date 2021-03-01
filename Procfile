@@ -1,1 +1,1 @@
-web: gunicorn AcneCalendar.wsgi
+web: gunicorn AcneCalendar.wsgi --log-file -
