@@ -25,11 +25,9 @@ SECRET_KEY = '9w8*&44-1s32ty@lf6@k5mtz^dft3zjl2oy^)a-j!&9la7-tvb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['https://acnetracker.herokuapp.com/']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,7 +119,6 @@ USE_TZ = True
 PROJECT_DIR = os.path.dirname(__file__)
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
