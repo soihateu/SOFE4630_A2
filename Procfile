@@ -1,1 +1,1 @@
-web: gunicorn Project.AcneTracker:AcneCalendar --log-file -
+web: gunicorn Project.AcneTracker --log-file -
