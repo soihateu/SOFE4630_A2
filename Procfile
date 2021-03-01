@@ -1,1 +1,1 @@
-web: gunicorn AcneTracker --pythonpath --log-file -
+web: gunicorn Project.AcneTracker --log-file -
