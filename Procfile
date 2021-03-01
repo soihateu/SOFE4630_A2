@@ -1,1 +1,1 @@
-web: gunicorn Project.AcneTracker.wsgi:application --log-file -
+web: gunicorn Project.AcneTracker:application --log-file -
