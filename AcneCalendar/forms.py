@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
 class AcneForm(ModelForm):
     class Meta:
         model = AcneModel
-        fields = ['date', 'image', 'desc']
+        fields = ['email', 'date', 'image', 'desc']
         widgets = {
             'date': DateInput,
             }

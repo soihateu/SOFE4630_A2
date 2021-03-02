@@ -83,8 +83,8 @@
 			selectHelper: true,
 			select: function(start, end, allDay) {
 				$('#formModal').modal('show');
-				document.getElementById("date").value = start;
-				if (title) {
+				//{{ form.date.auto_id }}.value = y + "-" + m + "-" + d;
+				/*if (title) {
 					calendar.fullCalendar('renderEvent',
 						{
 							title: title,
@@ -94,7 +94,7 @@
 						},
 						true // make the event "stick"
 					);
-				}
+				}*/
 				calendar.fullCalendar('unselect');
 			},
 			droppable: true, // this allows things to be dropped onto the calendar !!!
@@ -123,7 +123,7 @@
 			},
 
 			events: [
-				{
+				/*{
 					title: 'All Day Event',
 					start: new Date(y, m, 1)
 				},
@@ -166,12 +166,33 @@
 					end: new Date(y, m, 29),
 					url: 'http://google.com/',
 					className: 'success'
-				}
+				} */
 			],
 		});
 
 
 	});
+	
+/*  ==========================================
+	SHOW UPLOADED IMAGE
+* ========================================== */
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageResult')
+                .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(function () {
+    $({{ form.image.auto_id }}).on('change', function () {
+        readURL({{ form.image.auto_id }});
+    });
+});
 
 </script>
 <style>
@@ -234,9 +255,18 @@
 </style>
 </head>
 <body>
+<!-- Title -->
+<h1>Acne Tracker</h1><br>
 <div id='wrap'>
 
+<!-- Calendar -->
 <div id='calendar'></div>
+
+<!-- Weather -->
+<div>
+<br>
+<b>Today's humidity in Oshawa:</b> {{ humidity }}%
+</div>
 
 <div style='clear:both'></div>
 </div>
@@ -256,12 +286,14 @@
 	  {% csrf_token %}
 	  <center>
 	  <br>
+	  <label class="control-label">E-mail:</label> {{ form.email }}
+	  <br><br>
 	  <label class="control-label">Date:</label> {{ form.date }}
 	  <br><br>
-	  <label class="control-label">Select Image:</label> {{ form.image }}
+	  <label class="control-label">Select Image:</label> {{ form.image }}<br>
+	  <div class="image-area mt-4"><img id="imageResult" src="#" alt="" style="max-width:570px;"></div>
 	  <br><br>
-	  <label class="control-label">Notes:</label><br>
-	  {{ form.desc }}
+	  <label class="control-label">Notes:</label><br> {{ form.desc }}
 	  <br><br>
 	  </center>
 	  <div class="modal-footer">
