@@ -74,8 +74,11 @@ WSGI_APPLICATION = 'AcneTracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'FormData',
+        'CLIENT': {
+            'host': "mongodb+srv://test:test@cluster0.nonde.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+        },
     }
 }
 

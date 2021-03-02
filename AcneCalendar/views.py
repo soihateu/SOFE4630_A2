@@ -1,24 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import json
+from .forms import AcneForm
 
 def index(request):
-    return render(request, 'index.html', {})
+    form = AcneForm(request.POST, request.FILES)
+    
+    if form.is_valid():
+        form.save()
+        print("form success")
+    else:
+        print("form invalid")
+        print(form.errors)
 
-def submitForm(request):
-    dateInput = request.POST.get('date')
-    imageInput = request.POST.get('image')
-    descInput = request.POST.get('desc')
-
-    print("date: ", dateInput)
-    print("desc: ", descInput)
-    print("image: ", imageInput)
-    
-    responseData = {}
-    
-    #form = Form(request.POST)
-    #form.save()
-    
-    responseData['result'] = "Form submit successful!"
-    
-    return HttpResponse(json.dumps(responseData), content_type="application/json")
+    return render(request, 'index.html', {'form': form})
